@@ -11,7 +11,7 @@
             if (recordDelete != '') {
                 // Perform the ajax post
                 $.post("/ShoppingCart/RemoveFromCart"
-                    , { id: recordDelete }
+                    , { "id": recordDelete }
                     , function (data) {
                         // Successful requests get here
                         // Update the page elements
@@ -78,9 +78,7 @@
                 @item.Count
             </td>
             <td>
-                <a href="#" class="RemoveLink" data-id="@item.RecordId">
-                    remove from cart
-                </a>
+                <a href="#" class="RemoveLink" data-id="@item.RecordId"> Remove from cart</a>
             </td>
         </tr>
     }

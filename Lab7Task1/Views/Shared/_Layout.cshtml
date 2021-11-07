@@ -5,38 +5,195 @@
     <link href="@Url.Content("~/Content/Site.css")"
           rel="stylesheet"
           type="text/css" />
-    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")"
+    @*<script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")"
+            type="text/javascript"></script>*@
+    @*----------------CSS-------------------------------------------*@
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/music.css")" rel="stylesheet" />
+    @*----------------JavaScript------------------------------------*@
+    <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"
             type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.8.3.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.4.1.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/js-cookie.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/respond.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"
+            type="text/javascript"></script>
+    @*------------------CSS on Highsilde--------------------------------*@
+    <link href="@Url.Content("~/content1/highsilde/highslide.css")" rel="stylesheet" />
 </head>
 <body>
-    <div id="header">
-        <h1>
-            <a href="/">
-                ASP.NET MVC MUSIC
-                STORE
-            </a>
-        </h1>
-        <ul id="navlist">
-            <li class="first">
-                <a href="@Url.Content("~")" id="current">
-                    Home
+    <div class="container myContainer">
+        <div class="row">
+            <div class="col-md-12">
+                @*=======Header=========*@
+                <header>
+                    <div class="navbar navbar-inverse">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href=@Url.Content("~") class="logo">
+                                    <img src="~/content1/ImageMusic/logo55.png" alt="home" title="MVC Music sample site" class="img-responsive">
+                                </a>
+                                <div class="tagLine">Model View Controller Sample Site</div>
+                            </div>
+                            <div class=" hidden-sm hidden-xs">
+                                <div class="col-md-offset-6 col-md-1">
+                                    <a href="@Url.Content("~/ShoppingCart/")">
+                                        <div class="cartStatus enhancement">
+                                            <div class="cartNumber">
+                                                0
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="navbar-collapse collapse">
+                                    <div class="nav navbar-nav iconContainer">
+                                        <a href="@Url.Content("~/ShoppingCart/")">
+                                            <img src="~/content1/ImageMusic/cart.png" class="icon" alt="Cart" title="Cart">
+                                        </a>
+                                        <a href="@Url.Content("~/StoreManager/")">
+                                            <img src="~/content1/ImageMusic/account.png" class="icon" alt="Admin" title="Admin">
+                                        </a><a href="@Url.Content("~/Store/")">
+                                            <img src="~/content1/ImageMusic/about.png" class="icon" alt="Store" title="Store" style="margin-left:1px;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <div class="row equalHeightContainer">
+            <div class="col-md-2 sideColumns">
+                <div class="sideColumn">
+                    <div class="leftNav">
+                        <!-----------------SREACH----------------------->
+                        <div class="columnHeading hidden-xs hidden-sm">Search</div>
+                        <form action="/students/191/csandvig/music/search" class="text-center">
+                            <input type="text" name="query" class="form-control" style="width:90%;margin:3px auto;" />
+                            <input type="submit" class="btn btn-primary" />
+                        </form>
+                        <!-----------------MENU-------------------------->
+                        <div class="hidden-sm hidden-xs">
+                            <br />
+                            @{Html.RenderAction("GenreMenu", "Store");}
+                            <br />
+                            <br />
+                            <div class="tagLine text-center enhancement">
+                                This is a menu
+                            </div>
+                            <p class="text-center">
+                                <a href="@Url.Content("~")">Home</a>
+                                <br />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*============Main==================================*@
+            <div class="col-md-8 myContent">
+                @RenderBody()
+            </div>
+            @*============Main==================================*@
+            @*============ViewItem==================================*@
+            <div class="col-md-2">
+                <div class="sideColumn">
+                    <div class="sideColumns">
+                        <div class="enhancement">
+                            <div class="columnHeading">Viewed Items</div>
+                        </div>
+                        <div class="enhancement">
+                            <div class="columnHeading">Best Sellers</div>
+                        </div>
+                        <p style="padding-top:15px;">
+                            <input type="checkbox" id="showEnhancements" /><label for="showEnhancements" style="font-weight:normal">Show Enhancements</label>
+                        </p>
+                    </div>
+                    <!---Script-->
+                    <script>
+                        $(document).ready(function () {
+                            //set checkbox
+                            if (Cookies.get("showEnhancements") != undefined) {
+                                $("#showEnhancements").attr('checked', true);
+                                $(".enhancement").toggle();
+                                $(".enhancementNot").toggle();
+                            }
+
+                            $("#showEnhancements").click(function () {
+                                $(".enhancement").slideToggle(2000);
+                                $(".enhancementNot").slideToggle(2000);
+
+                                var myCookie = Cookies.get("showEnhancements")
+                                if (myCookie == undefined)
+                                    Cookies.set("showEnhancements", "true", { expires: 180 });
+                                else
+                                    Cookies.remove('showEnhancements');
+                            });
+                        });
+                    </script>
+                    <!--End Script-->
+                </div>
+            </div>
+            @*============ViewItem==================================*@
+        </div>
+        @*============Footer================================*@
+        <div class="row">
+            <div class="col-md-12">
+                <footer>
+                    <p>&copy; 2021 - My ASP.NET Application and Developed by group 5</p>
+                </footer>
+            </div>
+        </div>
+        @*============Footer================================*@
+    </div>
+
+    @*======================== Phần này t bỏ á ===================================*@
+    @*<div id="header">
+            <h1>
+                <a href="/">
+                    ASP.NET MVC MUSIC
+                    STORE
                 </a>
-            </li>
-            <li><a href="@Url.Content("~/Store/")">Store</a></li>
-            <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
-            <li>
-                <a href="@Url.Content("~/StoreManager/")">
-                    Admin
-                </a>
-            </li>
-        </ul>
-    </div>
-    @{Html.RenderAction("GenreMenu", "Store");}
-    <div id="main">
-        @RenderBody()
-    </div>
-    <div id="footer">
-        built with <a href="http://asp.net/mvc">ASP.NET MVC 3</a>
-    </div>
+            </h1>
+            <ul id="navlist">
+                <li class="first">
+                    <a href="@Url.Content("~")" id="current">
+                        Home
+                    </a>
+                </li>
+                <li><a href="@Url.Content("~/Store/")">Store</a></li>
+                <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+                <li>
+                    <a href="@Url.Content("~/StoreManager/")">
+                        Admin
+                    </a>
+                </li>
+            </ul>
+        </div>*@
+    @*===========================================================*@
+    @*@{Html.RenderAction("GenreMenu", "Store");}
+        <div id="main">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            built with <a href="http://asp.net/mvc">ASP.NET MVC 3</a>
+        </div>*@
+    @*===========================================================*@
+
 </body>
 </html>

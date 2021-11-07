@@ -95,19 +95,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content1\highsilde\highslide.css" />
+    <Content Include="content1\ImageMusic\about.png" />
+    <Content Include="content1\ImageMusic\account.png" />
+    <Content Include="content1\ImageMusic\cart.png" />
+    <Content Include="content1\ImageMusic\logo55.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ImageMusic\bgmusic.png" />
+    <Content Include="Content\ImageMusic\cartWhite.png" />
     <Content Include="Content\Images\home-showcase.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\placeholder.gif" />
+    <Content Include="Content\music.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -117,7 +126,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js-cookie.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Store\Details.cshtml" />
     <Content Include="Views\Store\Browse.cshtml" />
